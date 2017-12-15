@@ -8,9 +8,10 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+/*
 var getIP = require('ipware')().get_ip;
 var os = require("os");
-
+*/
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
     var allowedOrigins = ['https://narrow-plane.gomix.me', 'https://www.freecodecamp.com'];
