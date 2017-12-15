@@ -45,6 +45,11 @@ app.get('/test', function(req, res){
   res.end('Hello World!');
 });
 
+app.get('/:origUrl', function(req, res) {
+  //console.log(req.params.timestamp);
+  res.send(req.params.origUrl);
+})
+
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
   res.status(404);
