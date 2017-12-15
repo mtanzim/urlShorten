@@ -44,10 +44,26 @@ app.get('/test', function(req, res){
   res.end('Hello World!');
 });
 
+function shortenUrl(longUrl) {
+  googl.setKey('AIzaSyAxgUwTeQNjkpykpftRxW189BAcT3ZGdpw');
+  var shortGoogUrl='';
+  // Shorten a long url and output the result 
+  googl.shorten('http://www.google.com/')
+    .then(function (shortUrl) {
+        console.log(shortUrl);
+        shortGoogUrl= shortUrl;
+    })
+    .catch(function (err) {
+        console.error(err.message);
+    });
+  
+  return shortGoogUrl;
+}
+
 app.get('/https://:origUrl', function(req, res) {
   console.log(req.params.origUrl);
-  let shortUrl='';
-  let urlObj={'url':req.params.origUrl, 'short-url':shortUrl};
+  //let shortUrl='';
+  let urlObj={'url':req.params.origUrl, 'short-url':shortenUrl(req.params.origUrl)};
   res.type('txt').send(JSON.stringify(urlObj));
 })
 
