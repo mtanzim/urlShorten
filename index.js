@@ -55,7 +55,6 @@ app.get('/https://:origUrl', function(req, res) {
   googl.shorten(req.params.origUrl)
     .then(function (shortUrl) {
         console.log(shortUrl);
-        //shortGoogUrl= shortUrl;
         res.type('txt').send(JSON.stringify({'url':req.params.origUrl, 'short-url':shortUrl}));
     })
     .catch(function (err) {
